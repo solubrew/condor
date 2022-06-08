@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||
-'''
----
-<(META)>:
-	docid:
-	name: Condor Module Thing Python Document
-	description: >
-	expirary: <[expiration]>
-	version: '0.0.0.0.0.0'
-=======
 #@@@@@@@@@@Thing.Thing - Thankless Thackisaur@@@@@@@@@@@||
 '''
 ---
@@ -20,20 +9,11 @@
 	version: <[Version]>
 	path: <[LEXIvrs]>pheonix/elements/thing/thing.py
 	outline: <[outline]>
->>>>>>> master
 	authority: document|this
 	security: seclvl2
 	<(wt)>: -32
 '''
 # -*- coding: utf-8 -*-
-<<<<<<< HEAD
-#===============================================================================||
-import datetime as dt, time, hashlib, uuid, socket, platform#		||
-from os import environ, name
-from os.path import abspath, dirname, exists, join
-import pprint, pytz, urllib.request
-from dateutil.parser import isoparser, parse
-=======
 #=======================================================================||
 import datetime as dt, time, hashlib, uuid, socket, platform#		||
 from os import environ, name
@@ -43,7 +23,6 @@ import pytz
 from dateutil.parser import isoparser, parse
 import urllib.request
 
->>>>>>> master
 from importlib import import_module#									||
 from yaml import load as yload, dump as ydump, FullLoader
 try:#																	||
@@ -62,10 +41,7 @@ from yamlinclude import YamlIncludeConstructor
 #===============================================================================||
 here = join(dirname(__file__),'')#						||
 there = abspath(join('../../..'))#						||set path at pheonix level
-<<<<<<< HEAD
-=======
 version = '0.0.0.0.0.0'#												||
->>>>>>> master
 log = True
 #=======================================================================||
 pxcfg = join(abspath(here), '_data_/thing.yaml')#								||use default configuration
@@ -389,10 +365,7 @@ class who:#																||
 		prime += 'panda/blk/'+asprime+'/'+asprime+'.yaml'
 		self.prime = what(prime).get().dikt#							||
 		return self#													||
-<<<<<<< HEAD
-=======
 
->>>>>>> master
 def makeDateTime(d, f=None):#													||
 	'''identify given date format and return a properly formated time object
 	'''#										||
@@ -442,11 +415,6 @@ def makeDateTime(d, f=None):#													||
 		else:
 			print('Unknown Format', d, 'Length', len(d))
 	return pytz.utc.localize(dt.datetime.strptime(d, f))
-<<<<<<< HEAD
-
-
-=======
->>>>>>> master
 #==========================Source Materials=============================||
 '''
 https://docs.python.org/3.6/library/hashlib.html
@@ -460,9 +428,6 @@ https://ident.me/
 20210902 - 69.27.55.138...I think I'm probably pretty static with BNS
 
 '''
-<<<<<<< HEAD
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||
-=======
 #===========================:::DNA:::===================================||
 '''
 <(DNA)>:
@@ -504,4 +469,3 @@ https://ident.me/
 							work:
 '''
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@Controlled@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||
->>>>>>> master

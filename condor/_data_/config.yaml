@@ -1,12 +1,5 @@
 ---
 <(META)>:
-<<<<<<< HEAD
-  docid: '6461e864-070f-422b-b26d-2b8631369698'
-  name:
-  description: >
-  expirary: <[expiration]>
-  version: '0.0.0.0.0.0'
-=======
   DOCid: <^[uuid]^>
   name:
   description: >
@@ -14,16 +7,12 @@
   version: <[version]>
   <(path)>: <[LEXIvrs]>pheonix/elements/config/z-data_/config.yaml
   outline: <[outline]>
->>>>>>> master
   authority: document|this
   security: sec|lvl2
   <(WT)>: -32
 perf:
   cores: 4
-<<<<<<< HEAD
-=======
 LEXIvrs: /home/solubrew/AIM/
->>>>>>> master
 asprime:
 user: <[LEXIvrs]>/bear/<[prime]>/<[prime]>.yaml
 prime: <[prime]>
@@ -41,10 +30,5 @@ examine:
       - files.yaml
       - dbs.yaml
       - paths.yaml
-<<<<<<< HEAD
-filetypes: filetypes.yaml
-syntaxtypes: syntax.yaml
-=======
 filetypes: /home/solubrew/OPs/3_Work/opENGRg/3_Work/jobWarlockSys/actvThingery/OMEGA/content/whats/abstracts/defined/digitalsystems/filetypes.yaml
 syntaxtypes: /home/solubrew/OPs/3_Work/opENGRg/3_Work/jobWarlockSys/actvThingery/OMEGA/content/whats/abstracts/defined/digitalsystems/syntax.yaml
->>>>>>> master

@@ -1,42 +1,20 @@
 #@@@@@@@@@@@@@@@@@@@Config.Config@@@@@@@@@@@@@@@@@@@@@@||
 '''
 ---
-<<<<<<< HEAD
-<(meta)>:
-	DOCid: 1b83f5b6-3b4a-437d-a8f1-372d2220125e
-=======
 <(META)>:
 	docid: 1b83f5b6-3b4a-437d-a8f1-372d2220125e
->>>>>>> master
 	name: Elements Level Config Module Python Document
 	description: >
 		Load configuration files and parse using a given
 		template
 	expirary: <[expiration]>
-<<<<<<< HEAD
-	version: <[version]>
-=======
 	version: '0.0.0.0.0.0'
->>>>>>> master
 	authority: document|this
 	security: seclvl2
 	<(wt)>: -32
 '''
 # -*- coding: utf-8 -*-
 #===============================================================================||
-<<<<<<< HEAD
-from os.path import abspath, dirname, isdir, isfile, join
-import datetime as dt, copy#, multiprocessing as mp#	||
-from importlib import import_module#									||
-#===============================================================================||
-from condor import session, thing#									||
-
-from excalc import text as calct, tree as calctr#								||
-
-from fxsquirl.orgnql import fonql, yonql
-
-from subtrix import subtrix#									||
-=======
 from os.path import abspath, dirname, expanduser, isdir, isfile, join
 import datetime as dt, copy#													||
 from importlib import import_module#											||
@@ -45,7 +23,6 @@ from condor import session, thing#												||
 from excalc import text as calct, tree as calctr#								||
 from fxsquirl.orgnql import fonql, yonql
 from subtrix import subtrix#													||
->>>>>>> master
 #========================Instance Globals=======================================||
 'Generate an Instance uuid for the initiation point in a session'#				||
 if 'povsesh' not in globals():#													||
@@ -53,12 +30,7 @@ if 'povsesh' not in globals():#													||
 	povsesh = session.pov().sessions()#											||
 #========================Common Globals=========================================||
 here = join(dirname(__file__),'')#												||
-<<<<<<< HEAD
-there = abspath(join('../../..'))#												||set path at pheonix level
-version = '0.0.0.0.0.0'#														||
-=======
 home = expanduser('~')
->>>>>>> master
 log = False
 #===============================================================================||
 pxcfg = join(abspath(here), '_data_/config.yaml')#								||use default configuration
@@ -72,10 +44,6 @@ class instruct:#																||
 		self.data = data#														||
 		self.thing = it
 		self.dikt = {}
-<<<<<<< HEAD
-		#self._seshSub()
-=======
->>>>>>> master
 
 	def addArgs(self, args):
 		''' '''

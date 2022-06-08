@@ -129,8 +129,6 @@ class pov:#																		||
 		'''Move session from sleep to kill for finalization of data history'''#	||
 		kseshs = os.listdir(f'{spath}2_kill')#							||
 		return self#													||
-<<<<<<< HEAD
-=======
 # import os
 # import socket
 # import platform
@@ -150,7 +148,6 @@ class pov:#																		||
 # for p in psutil.disk_usage('/'):
 # 	print(p/1000000)
 #
->>>>>>> master
 
 class session:
 	def __init__(self):
@@ -188,12 +185,6 @@ class session:
 	def parents(self):
 		self.mom = getParents('mom')
 		self.dad = getParents('dad')
-<<<<<<< HEAD
-
-
-#==============================Source Materials=================================||
-'''
-=======
 #	def byUser(self):#													||
 #		'Load Prime, POV, & Device'#									||
 #		data = {'prime': self.prime}#									||
@@ -226,6 +217,5 @@ dna: #																			||
 			<[description]> #													||
 		work: #																	||
 			- <@[work_datetime]@> #												||
->>>>>>> master
 ''' #																			||
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||
