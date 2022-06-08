@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 <(META)>:
   docid: 'e866c434-f851-4b88-bb57-be5032e29a3a'
   name: Elements Level Thing Module Python Document
@@ -8,9 +9,27 @@
   authority: document|this
   security: seclvl2
   <(WT)>: -32
+=======
+<(meta)>:
+  DOCid: <^[uuid]^>
+  name: Elements Level Thing Module Python Document
+  description: >
+  expirary: <[expiration]>
+  version: <[Version]>
+  path: <[LEXIvrs]>pheonix/elements/thing/thing.py
+  outline:
+    FRMT00.000
+  authority: document|this
+  security: seclvl2
+  <(wt)>: -32
+>>>>>>> master
 append:
 symbols: <(THINGvrs)>things/symbols.yaml
 constants: <(THINGvrs)>things/constants.yaml
 heximal: <(THINGvrs)>things/heximal.txt
+<<<<<<< HEAD
 binary: <(THINGvrs)>things/binary.txt
+=======
+binary: <(THINGvrs)>/panda/grn/things/binary.txt
+>>>>>>> master
 time:

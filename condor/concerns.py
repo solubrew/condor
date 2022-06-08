@@ -1,6 +1,7 @@
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||
 '''
 ---
+<<<<<<< HEAD
 <(META)>:
 	docid: <^[uuid]^>
 	name:
@@ -10,15 +11,38 @@
 	authority: document|this
 	security: seclvl2
 	<(WT)>: -32
+=======
+<(meta)>:
+	DOCid: <^[uuid]^>
+	Name:
+	description: >
+	expirary: <[expiration]>
+	Version: <[Version]>
+	path: <[LEXIvrs]>panda/LEXI/
+	outline: <[outline]>
+	authority: document|this
+	security: seclvl2
+	<(wt)>: -32
+>>>>>>> master
 '''
 # -*- coding: utf-8 -*-
 #===============================================================================||
 from os.path import abspath, dirname, join
 #===============================================================================||
+<<<<<<< HEAD
+=======
+
+#===============================================================================||
+>>>>>>> master
 from condor import condor
 #===============================================================================||
 here = join(dirname(__file__),'')#						||
 there = abspath(join('../../..'))#												||set path at pheonix level
+<<<<<<< HEAD
+=======
+version = '0.0.0.0.0.0'#												||
+wolfpack = '{0}wolf/pack/bash'.format(there)
+>>>>>>> master
 #===============================================================================||
 class actor(object):
 	def __init__(self, actor, cfg={}):
@@ -33,6 +57,7 @@ class actor(object):
 
 	def loadCFGs(self):
 		''' '''
+<<<<<<< HEAD
 
 	def loadOP(self):
 		''' '''
@@ -43,10 +68,22 @@ class actor(object):
 	def searchOPs(self):
 		''' '''
 
+=======
+	def loadOP(self):
+		''' '''
+	def loadDATA(self):
+		''' '''
+	def searchOPs(self):
+		''' '''
+>>>>>>> master
 	def searchDATA(self):
 		''' '''
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 class concern(object):
 	def __init__(self, concern, cfg=None):
 		'''Concern object implements permissions and roles for access to work
@@ -91,7 +128,31 @@ class concern(object):
 		'''Search for data connected to concern '''
 
 
+<<<<<<< HEAD
 #==============================Source Materials=================================||
 ''' #																			||
+=======
+
+#==============================Source Materials=================================||
+#================================:::DNA:::======================================||
+''' #																			||
+dna: #																			||
+<@[datetime]@>: #																||
+	<[class]>: #																||
+		version: <[active:.version]> #											||
+		test: #																	||
+		description: > #														||
+			<[description]> #													||
+		work: #																	||
+			- <@[work_datetime]@> #												||
+<[datetime]>: #																	||
+	here: #																		||
+		version: <[active:.version]> #											||
+		test: #																	||
+		description: > #														||
+			<[description]> #													||
+		work: #																	||
+			- <@[work_datetime]@> #												||
+>>>>>>> master
 ''' #																			||
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||

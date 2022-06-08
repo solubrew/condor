@@ -129,6 +129,28 @@ class pov:#																		||
 		'''Move session from sleep to kill for finalization of data history'''#	||
 		kseshs = os.listdir(f'{spath}2_kill')#							||
 		return self#													||
+<<<<<<< HEAD
+=======
+# import os
+# import socket
+# import platform
+# import psutil
+# print(os.environ['HOME'])
+# if socket.gethostname().find('.') >= 0:
+# 	name = socket.gethostname()
+# else:
+# 	name = socket.gethostbyaddr(socket.gethostname())[0]
+# print(name)
+# print(socket.gethostname())
+# print(socket.gethostbyaddr(socket.gethostname()))
+# print(os.name)
+# print(platform.machine())
+# print(platform.linux_distribution())
+# print(platform.release())
+# for p in psutil.disk_usage('/'):
+# 	print(p/1000000)
+#
+>>>>>>> master
 
 class session:
 	def __init__(self):
@@ -166,9 +188,44 @@ class session:
 	def parents(self):
 		self.mom = getParents('mom')
 		self.dad = getParents('dad')
+<<<<<<< HEAD
 
 
 #==============================Source Materials=================================||
 '''
+=======
+#	def byUser(self):#													||
+#		'Load Prime, POV, & Device'#									||
+#		data = {'prime': self.prime}#									||
+#		primecfg = tmplt.thing(self.config['user'], data).run().it#		||
+#		ndikt = self.load(primecfg).dikt#								||
+#		usercfg = primecfg['stor']['configs']+'/'#						||
+#		usercfg += cfg['meta']['name']+'.yaml'#							||
+#		udikt = config.instruct(usercfg).load(None, None).dikt#			||
+#		self.where = where.home()#										||
+#		self.who = who.whom()#											||
+#		self.override(udikt)#											||
+#		return self#													||
+#==============================Source Materials=================================||
+#================================:::DNA:::======================================||
+''' #																			||
+dna: #																			||
+<@[datetime]@>: #																||
+	<[class]>: #																||
+		version: <[active:.version]> #											||
+		test: #																	||
+		description: > #														||
+			<[description]> #													||
+		work: #																	||
+			- <@[work_datetime]@> #												||
+<[datetime]>: #																	||
+	here: #																		||
+		version: <[active:.version]> #											||
+		test: #																	||
+		description: > #														||
+			<[description]> #													||
+		work: #																	||
+			- <@[work_datetime]@> #												||
+>>>>>>> master
 ''' #																			||
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||
