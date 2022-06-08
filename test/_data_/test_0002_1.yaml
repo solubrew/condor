@@ -1,0 +1,2727 @@
+---
+'<(META)>':
+  'DOCid':
+  name:
+  description: >
+    Build out a dataset connection between algos and datavein allowing for
+    history of usage against dataset domains and performance of algorithmic
+    strategies
+
+    algo metrics: 0-32 based on algorythm relative memory usage
+
+  expirary:
+  version:
+  path: '<[LEXIvrs]>'
+  outline: '<[outline]>'
+  authority: 'document|this'
+  security: 'sec|lvl2'
+  <(WT)>: '-32'
+algo12Z0:
+  <(META)>:
+    Name:
+    Description: >
+  a000:
+    name:
+    code: 'algo12Z1_a000'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          -
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+algo12Z1:
+  <(META)>:
+    Name: 'Linear Regression Models'
+    Description: >
+      Configure Model Options for Linear Regression
+  a000:
+    name: 'Linear Regression'
+    code: 'algo12Z1_a000'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 1
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html'
+        model: 'sklearn.linear_model.LinearRegression'
+        genericEQ: 'Y = mX + b'
+        size: 32
+        speed: 5
+        success: 16
+        datasettype: 32
+        status: >
+          Linear Regression is the simplest generation of a statistical model
+          creating a straight line with a slope of x/y and a y intercept of b
+          seems to work well for numerai but is non-unique and likely
+          significant overfit
+        dargs:
+          n_jobs: -1
+        args:
+          -
+            uuid:
+            name:
+            dargs:
+        opargs:
+      statsmodels:
+        valid: 1
+        docs:
+          -
+        model:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+          epochs: 1000
+          validation_split: 0.2
+          verbose: 0
+          callbacks: '<[callback]>'
+        args:
+          -
+            uuid:
+            name:
+            dargs:
+      tensorflow:
+        valid: 1
+        docs:
+          -
+        model:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+          epochs: 1000
+          validation_split: 0.2
+          verbose: 0
+          callbacks: '<[callback]>'
+        args:
+          -
+            uuid:
+            name:
+            dargs:
+      pymc3:
+        valid: 1
+        docs:
+          -
+        model: pymc3.Model
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+          epochs: 1000
+          validation_split: 0.2
+          verbose: 0
+          callbacks: '<[callback]>'
+        args:
+          -
+            uuid:
+            name:
+            dargs:
+  a001:
+    name: 'Linear Ridge'
+    code: 'algo12Z1_a001'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 1
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html#sklearn.linear_model.Ridge'
+          - 'https://scikit-learn.org/stable/modules/linear_model.html#ridge-regression'
+        model: 'sklearn.linear_model.Ridge'
+        genericEQ: '||y - Xw||^2_2 + alpha * ||w||^2_2'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+          Ridge seeks to minimize problems with Ordinary Least Square residuals
+        opargs:  # options for arguments
+          alpha: 'min|max->float'
+          fit_intercept: 'true|false->bool'
+          normalize: 'true|false->bool'
+          copy_X: 'true|false->bool'
+          max_iter: 'None|max->None|int'
+          tol: '0.001->float'
+          solver: 'auto->str'
+          random_state: '->int'
+        dargs:  # default argument options
+          alpha: 1.0
+          fit_intercept: true
+          normalize: false
+          copy_X: true
+          max_iter:
+          tol: 0.001
+          solver: 'auto'
+          random_state:
+        args:
+          -
+            uuid:
+            name:
+            dargs:
+      tensorflow:
+        docs:
+        model:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+  a002:
+    name: 'Linear Lasso'
+    code: 'algo12Z1_a002'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 1
+        docs:
+          - 'https://scikit-learn.org/stable/modules/linear_model.html#lasso'
+        model: 'sklearn.linear_model.Lasso'
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+          alpha: 0.1
+          copy_X: true
+          fit_intercept: true
+          max_iter: 1000
+          normalize: false
+          positive: false
+          precompute: false
+          random_state: 67
+          selection: 'cyclic'
+          tol: 0.0001
+          warm_start: false
+        args:
+          -
+            uuid:
+            name: 'EXa00.000'
+            modelset:
+              -
+                Name:
+                dataset:
+                metrics:
+                  auc:
+                  logloss:
+                  roc:
+                  balance:
+        opargs:
+          dargs:
+            alpha:
+              - [0.000000000000001, 0.0000000001, 0.000000001, 0.0001]
+              - [0.001, 0.01, 1, 5, 10, 20]
+
+  a003:
+    name: 'Linear BayesianRidge'
+    code: 'algo12Z1_a003'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 1
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.BayesianRidge.html'
+        model: 'sklearn.linear_model.BayesianRidge'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+          alpha_1: 0.000001
+          alpha_2: 0.000001
+          compute_score: [false, true]
+          copy_X: true
+          fit_intercept: [true, false]
+          lambda_1: 0.000001
+          lambda_2: 0.000001
+          n_iter: 300
+          normalize: [true, false]
+          tol: 0.001
+          verbose: [true, false]
+        dargs:
+          alpha_1: 0.000001
+          alpha_2: 0.000001
+          compute_score: false
+          copy_X: true
+          fit_intercept: true
+          lambda_1: 0.000001
+          lambda_2: 0.000001
+          n_iter: 300
+          normalize: false
+          tol: 0.001
+          verbose: false
+        args:
+          -
+            uuid:
+            name: 'EXa00.000'
+            dargs:
+              alpha:
+            modelset:
+              -
+                Name:
+                dataset:
+                metrics:
+                  auc:
+                  logloss:
+  a004:
+    name: 'Linear SGDRegressor'
+    code: 'algo12Z1_a004'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 1
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDRegressor.html'
+        model: 'sklearn.linear_model.SGDRegressor'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+          alpha: 0.0001
+          average: [true, false]
+          early_stopping: [true, false]
+          epsilon: 0.1
+          eta0: 0.01
+          fit_intercept: [true, false]
+          l1_ratio: 0.15
+          learning_rate: 'invscaling'
+          loss: 'squared_loss'
+          max_iter: 1000
+          n_iter_no_change: 5
+          penalty: 'l2'
+          power_t: 0.25
+          random_state: 32
+          shuffle: [true, false]
+          tol: 0.001
+          validation_fraction: 0.1
+          verbose: 0
+          warm_start: [true, false]
+        dargs:
+          alpha: 0.0001
+          average: false
+          early_stopping: false
+          epsilon: 0.1
+          eta0: 0.01
+          fit_intercept: true
+          l1_ratio: 0.15
+          learning_rate: 'invscaling'
+          loss: 'squared_loss'
+          max_iter: 1000
+          n_iter_no_change: 5
+          penalty: 'l2'
+          power_t: 0.25
+          random_state: 32
+          shuffle: true
+          tol: 0.001
+          validation_fraction: 0.1
+          verbose: 0
+          warm_start: false
+        args:
+          -
+            uuid:
+            name:
+            dargs:
+  a005:
+    name: 'PassiveAggressiveRegressor'
+    code: 'algo12Z1_a005'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 1
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.PassiveAggressiveRegressor.html#sklearn.linear_model.PassiveAggressiveRegressor'
+        model: 'sklearn.linear_model.PassiveAggressiveRegressor'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          C: 1.0
+          average: false
+          early_stopping: false
+          epsilon: 0.1
+          fit_intercept: true
+          loss: 'epsilon_insensitive'
+          max_iter: 100
+          n_iter_no_change: 5
+          random_state: 0
+          shuffle: true
+          tol: 0.001
+          validation_fraction: 0.1
+          verbose: 0
+          warm_start: false
+        args:
+          -
+            uuid:
+            name:
+            dargs:
+  a006:
+    'name': 'TheilSenRegressor'
+    code: 'algo12Z1_a006'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 1
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.TheilSenRegressor.html'
+        model: 'sklearn.linear_model.TheilSenRegressor'
+        metrics:
+          size: 16
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          copy_X: true
+          fit_intercept: true
+          max_iter: 300
+          max_subpopulation: 10000
+          n_jobs:
+          n_subsamples:
+          random_state: 0
+          tol: 0.001
+          verbose: false
+        args:
+          -
+            uuid:
+            name:
+            dargs:
+  a007:
+    code: 'algo12Z1_a008'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 1
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.HuberRegressor.html#sklearn.linear_model.HuberRegressor'
+        model: 'sklearn.linear_model.HuberRegressor'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          epsilon: 1.35
+          max_iter: 1000
+          alpha: 0.0001
+          warm_start: false
+          fit_intercept: true
+          tol: 0.00001
+        args:
+          -
+            uuid:
+            name:
+            dargs:
+  a008:
+    code: 'algo12Z1_a009'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 0
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RANSACRegressor.html#sklearn.linear_model.RANSACRegressor'
+        state: >
+          Need to understand the use of sub-samples and how that effects the estimator
+          failed for Numerai
+          Full Fit Failed RANSAC could not find a valid consensus set.
+          All `max_trials` iterations were skipped because each randomly chosen
+          sub-sample failed the passing criteria. See estimator attributes for
+          diagnostics (n_skips*).
+        model: 'sklearn.linear_model.RANSACRegressor'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          base_estimator:
+          is_data_valid:
+          is_model_valid:
+          loss: 'absolute_loss'
+          max_skips: 100000000000
+          max_trials: 100
+          min_samples:
+          random_state: 0
+          residual_threshold:
+          stop_n_inliers:
+          stop_probability: 0.99
+          random_state: 67
+        args:
+          -
+            uuid:
+            name:
+            dargs:
+  a009:
+    code: 'algo12Z1_a010'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 0
+        docs:
+          - ''
+        model: 'sklearn.linear_model.ElasticNet'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          l1_ratio:
+          fit_intercept:
+        args:
+          -
+            uuid:
+            name:
+            dargs:
+algo12Z2:
+  <(META)>:
+    Name: Error Correcting Algorithms
+    Description: >
+      #Mean-Median Error Regression Algorythm
+      #calculate the mean of each row and the median of each row
+      #check the prediction accuracy of the mean vs the median
+      #create a an optimized prediction between the 2
+      #find the marginal errors
+      #if mean and median distance is lower than the proposed shift
+      #then it doesn't need to be recalculated
+      #have to keep track of the total bias though to be applied to the dataset at the end
+      #need to setup a way seperate data on a pass and then recombine at the end and apply the changes
+      #of the whole change
+  a000:
+    code:
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+algo12Z3:
+  <(META)>:
+    Name: Models
+    Description: >
+      #Modality Evaluation Algorythm
+  a000:
+    code:
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+algo12Z4:
+  <(META)>:
+    Name: Models
+    Description: >
+      #Fat-Tail Distribution Algorythm
+  a000:
+    code:
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+algo12Z5:
+  <(META)>:
+    Name: Time Line Prediction Models
+    Description: >
+  a000:
+    Name:
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      prophet:
+        valid: 1
+        docs:
+        model: 'pheonix.molecules.logicizer.prophet.engine'
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+algo12Z6:
+  <(META)>:
+    Name: Count Data Algorythm Models
+    Description: >
+  a000:
+    'name': Poisson Regression Model
+    'code': 'algo12Z6_a000'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      pymc3:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+  a001:
+    'name': Negative Binomial Regression Model
+    'code': 'algo12Z6_a001'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      pymc3:
+        valid: 0
+        docs:
+        model: pymc3.MOdel
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+
+        args:
+        opargs:
+algo12Z7:
+  <(META)>:
+    Name: Logarythimc Algorythms
+    Description: >
+      Define Parameters for running Logarythimc Algorythms and define and score them
+      based on various metrics
+  a000:
+    Name: 'algo12Z7_a000'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 1
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression'
+        model: 'sklearn.linear_model.LogisticRegression'
+        opargs:
+        dargs:
+          random_state: 32
+          solver: 'newton-cg'
+          multi_class: 'multinomial'
+        args_a000:
+          penalty: 'l2'
+          C: 0.01
+          n_jobs: 1
+          verbose: 2
+          solver: 'liblinear'
+        args_a001:
+          penalty: 'l2'
+          C: 0.01
+          n_jobs: 12
+          verbose: 2
+          solver: 'newton-cg'
+algo12Z8:
+  <(META)>:
+    Name:
+    Description: >
+  a000:
+    Name: 'algo12Z8_a000'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 1
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html#sklearn.neural_network.MLPRegressor'
+        state: >
+          failing due to str float comparison...not sure how strings are
+          in the dataset...
+        model: 'sklearn.neural_network.MLPRegressor'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          hidden_layer_sizes:
+            - 100
+          solver: 'adam'
+          alpha: 0.0001
+          batch_size: 'auto'
+          learning_rate: 'constant'
+          learning_rate_init: 0.001
+          power_t: 0.5
+          max_iter: 200
+          shuffle: true
+          random_state: 32
+          tol: 0.0001
+          verbose: false
+          warm_start: false
+          momentum: 0.9
+          nesterovs_momentum: true
+          early_stopping: false
+          validation_fraction: 0.1
+          beta_1: 0.9
+          beta_2: 0.999
+          epsilon: 0.00000001
+          n_iter_no_change: 10
+        args:
+          -
+            uuid:
+            name:
+            dargs:
+  a001:
+    Name: 'algo12Z8_a001'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 1
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.BernoulliRBM.html#sklearn.neural_network.BernoulliRBM'
+        model: 'sklearn.neural_network.BernoulliRBM'
+        opargs:
+        dargs:
+          batch_size: 10
+          learning_rate: 0.1
+          n_components: 2
+          n_iter: 10
+          random_state: 32
+          verbose: 0
+        args:
+          -
+            uuid:
+            name:
+            dargs:
+  a002:
+    Name: 'algo12Z8_a002'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 0
+        docs:
+          - 'https://scikit-learn.org/stable/modules/neural_networks_supervised.html'
+        model: 'sklearn.neural_network.MLPClassifier'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          activation: 'relu'
+          alpha: 1e-05
+          batch_size: 'auto'
+          beta_1: 0.9
+          beta_2: 0.999
+          early_stopping: False
+          epsilon: 1e-08
+          hidden_layer_sizes: (5, 2)
+          learning_rate: 'constant'
+          learning_rate_init: 0.001
+          max_iter: 200
+          momentum: 0.9
+          n_iter_no_change: 10
+          nesterovs_momentum: True
+          power_t: 0.5
+          random_state: 1
+          shuffle: True
+          solver: 'lbfgs'
+          tol: 0.0001
+          validation_fraction: 0.1
+          verbose: False
+          warm_start: False
+        args:
+          -
+            uuid:
+            name:
+            dargs:
+algo12Z9:
+  <(META)>:
+    Name:
+    Description: >
+  a000:
+    Name: 'algo12Z9_a000'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 1
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html'
+        model: 'sklearn.svm.OneClassSVM'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          'kernel': 'rbf'
+          'degree': 3
+          'gamma': 'scale'
+          'coef0': 0.0
+          'tol': 0.001
+          'nu': 0.5
+          'shrinking': true
+          'cache_size': 200
+          'verbose': false
+          'max_iter': -1
+        args:
+          -
+            uuid:
+            name:
+            dargs:
+  a001:
+    Name: 'algo12Z9_a001'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 1
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html#sklearn.ensemble.IsolationForest'
+        model: 'sklearn.ensemble.IsolationForest'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          'n_estimators': 100
+          'max_samples': 'auto'
+          'contamination': 'auto'
+          'max_features': 1.0
+          'bootstrap': false
+          'n_jobs':
+          'behaviour': 'new'
+          'random_state':
+          'verbose': 0
+        args:
+          -
+            uuid:
+            name:
+            dargs:
+  a002:
+    Name: 'algo12Z9_a002'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        description: >
+          Seems to take an extremely long time to train and has a horrible auc in the numerai
+          training time increased dramaticaly with chunksize and no partial train function
+        valid: 1
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html#sklearn.neighbors.LocalOutlierFactor'
+        model: 'sklearn.neighbors.LocalOutlierFactor'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          'n_neighbors': 20
+          'algorithm': 'auto'
+          'leaf_size': 30
+          'metric': 'minkowski'
+          'p': 2
+          'metric_params':
+          'contamination': 'auto'
+          'novelty': true
+          'n_jobs':
+  a003:
+    name: EllipticEnvelope
+    code: 'algo12Z9_a003'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 1
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.covariance.EllipticEnvelope.html#sklearn.covariance.EllipticEnvelope'
+        model: 'sklearn.covariance.EllipticEnvelope'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+          model not being converted to object properly
+        opargs:
+        dargs:
+          'store_precision': true
+          'assume_centered': false
+          'support_fraction': 0.99
+          'contamination': 0.1
+          'random_state':
+algo11Z10:
+  <(META)>:
+    Name:
+    Description: >
+  a000:
+    Name: 'algo11Z10_a000'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 1
+        docs:
+          - 'https://scikit-learn.org/stable/modules/neighbors.html'
+        model: 'sklearn.neighbors.nearest_centroid.NearestCentroid'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          metric: 'euclidean'
+          shrink_threshold:
+algo11Z11:
+  <(META)>:
+    Name:
+    Description: >
+      Activation Sensitivity Weighting Algorythm
+  a000:
+    Name: 'algo11Z11_a000'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+algo11Z12:
+  <(META)>:
+    Name: Common Classifier Algorithms
+    Description: >
+  a000:
+    Name: 'algo11Z12_a000'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 1
+        docs:
+          - 'https://machinelearningmastery.com/implement-random-forest-scratch-python/'
+        model: 'sklearn.ensemble.RandomForestClassifier'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          n_estimators: 100
+          n_jobs: 1
+          random_state: 32
+  a001:
+    code: 'algo12Z1_a007'
+    'name': SGDClassifier
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 1
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDClassifier.html'
+        model: 'sklearn.linear_model.SGDClassifier'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          alpha: 0.0001
+          average: false
+          class_weight:
+          early_stopping: false
+          epsilon: 0.1
+          eta0: 0.0
+          fit_intercept: true
+          l1_ratio: 0.15
+          learning_rate: 'optimal'
+          loss: 'hinge'
+          max_iter: 1000
+          n_iter_no_change: 5
+          n_jobs:
+          penalty: 'l2'
+          power_t: 0.5
+          random_state: 32
+          shuffle: true
+          tol: 0.001
+          validation_fraction: 0.1
+          verbose: 0
+          warm_start: false
+        args:
+          -
+            uuid:
+            name:
+            dargs:
+algo11Z13:
+  <(META)>:
+    Name: PCA Algorythms
+    Description: >
+  a000:
+    Name: 'algo11Z13_a000'
+    Description: >
+      Sklearn Kernel PCA requires a huge amount of RAM
+      need to work out feature restriction
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 0
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.KernelPCA.html'
+        model: 'sklearn.decomposition.KernelPCA'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        memory: 0
+        status: >
+        opargs:
+        dargs:
+          n_components:
+          kernel: 'linear'
+          copy: false
+          gamma:
+          degree: 3
+          coef0: 1
+          kernel_params:
+          alpha: 1.0
+          fit_inverse_transform: false
+          eigen_solver: 'auto'
+          tol: 0
+          max_iter:
+          remove_zero_eig: false
+  a001:
+    Name: 'algo11Z13_a001'
+    Description: >
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 0
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.KernelPCA.html'
+        model: 'sklearn.decomposition.IncrementalPCA'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        memory: 0
+        status: >
+        opargs:
+        dargs:
+          n_components:
+          kernel: 'linear'
+          copy: false
+          gamma:
+          degree: 3
+          coef0: 1
+          kernel_params:
+          alpha: 1.0
+          fit_inverse_transform: false
+          eigen_solver: 'auto'
+          tol: 0
+          max_iter:
+          remove_zero_eig: false
+          batch_size: 1000
+algo11Z14:
+  <(META)>:
+    Name:
+    Description: >
+  a000:
+    Name: 'algo11Z14_a000'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 0
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.manifold.Isomap.html'
+        model: 'sklearn.manifold.Isomap'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          n_neighbors: 5
+          n_components: 2
+          eigen_solver: 'auto'
+          tol: 0
+          max_iter:
+          path_method: 'auto'
+          neighbors_algorithm: 'auto'
+          portion: 0.1
+algo11Z15:
+  <(META)>:
+    Name: t-Distributed Stochastic Neighbor Embedding
+    Description: >
+
+  a000:
+    Name: 'algo11Z15_a000'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 0
+        docs:
+          - ''
+        model: ''
+        opargs:
+        dargs:
+algo11Z16:
+  <(META)>:
+    Name: Neural Networks
+    Description: >
+      Standard Neural Network Configurations for routing learning tasks through
+  a000:
+    Name: 'algo11Z16_a000'
+    platform:
+      pheonix:
+        valid: 1
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.simpleNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+      tensor:
+        valid: 0
+        docs:
+          - ''
+        model: ''
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+      pytorch:
+        valid: 0
+        docs:
+          - ''
+        model: ''
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a001:
+    Name: 'algo11Z16_a001'
+    platform:
+      pheonix:
+        valid: 1
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.perceptronNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          layers: 1
+        args:
+          -
+  a002:
+    Name: 'algo11Z16_a002'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.backpropagateNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a003:
+    Name: 'algo11Z16_a003'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.feedforwardNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a004:
+    Name: 'algo11Z16_a004'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.radialbasisNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a005:
+    Name: 'algo11Z16_a005'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.recurrentNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a006:
+    Name: 'algo11Z16_a006'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.longshortmemoryNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a007:
+    Name: 'algo11Z16_a007'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.gatedrecurrentunitNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a008:
+    Name: 'algo11Z16_a008'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.autoencoderNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a009:
+    Name: 'algo11Z16_a009'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.variantionAENN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a010:
+    Name: 'algo11Z16_a010'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.denoisingAENN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a011:
+    Name: 'algo11Z16_a011'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.sparseAENN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a012:
+    Name: 'algo11Z16_a012'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.markovchainNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a013:
+    Name: 'algo11Z16_a013'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.hopfieldNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a014:
+    Name: 'algo11Z16_a014'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.boltzmannmachineNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a015:
+    Name: 'algo11Z16_a015'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.restrictedBMNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a016:
+    Name: 'algo11Z16_a016'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.deepbeliefNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a017:
+    Name: 'algo11Z16_a017'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.deepconvolutionalNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a018:
+    Name: 'algo11Z16_a018'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.deconvolutionalNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a019:
+    Name: 'algo11Z16_a019'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.deepconvolutionalinversegraphicsNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a020:
+    Name: 'algo11Z16_a020'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.generativeadversarialNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a021:
+    Name: 'algo11Z16_a021'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.liquidstatemachineNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a022:
+    Name: 'algo11Z16_a022'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.extremelearningmachineNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a023:
+    Name: 'algo11Z16_a023'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.echostateNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a024:
+    Name: 'algo11Z16_a024'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.deepresidualNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a025:
+    Name: 'algo11Z16_a025'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.kohonenNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a026:
+    Name: 'algo11Z16_a026'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.supportvectormachineNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a027:
+    Name: 'algo11Z16_a027'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+          - ''
+        model: 'pheonix.molecules.logicizer.NN.neuralturingmachineNN'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+algo11Z20:
+  <(META)>:
+    Name: Linear SVM (Support Vector Machine) Models
+    Description: >
+  a000:
+    Name: 'algo11Z20_a000'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 1
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVR.html'
+        model: 'sklearn.svm.LinearSVR'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          C: 1.0
+          dual: true
+          epsilon: 0.0
+          fit_intercept: true
+          intercept_scaling: 1.0
+          loss: 'epsilon_insensitive'
+          max_iter: 100000
+          random_state: 0
+          tol: 0.00001
+          verbose: 0
+  a001:
+    Name: 'algo11Z20_a001'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 1
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html'
+        model: 'sklearn.svm.LinearSVC'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          C: 1.0
+          class_weight:
+          dual: true
+          fit_intercept: true
+          intercept_scaling: 1
+          loss: 'squared_hinge'
+          max_iter: 1000
+          multi_class: 'ovr'
+          penalty: 'l2'
+          random_state: 0
+          tol: 0.00001
+          verbose: 0
+algo11Z23:
+  <(META)>:
+    Name:
+    Description: >
+
+  a000:
+    Name: 'algo11Z23_a000'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 0
+        docs:
+          - ''
+        model: ''
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+algo11Z24:
+  <(META)>:
+    Name: 'Naive Bayes Based Algorythms'
+    Description: >
+  a000:
+    Name: 'algo11Z24_a000'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 1
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html'
+        model: 'sklearn.naive_bayes.GaussianNB'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          priors:
+          var_smoothing: 0.000000001
+  a001:
+    Name: 'algo11Z24_a001'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 1
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html'
+        model: 'sklearn.naive_bayes.MultinomialNB'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          alpha: 1.0
+          class_prior:
+          fit_prior: true
+  a002:
+    Name: 'algo11Z24_a002'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 1
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.ComplementNB.html'
+        model: 'sklearn.naive_bayes.ComplementNB'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          alpha: 1.0
+          class_prior:
+          fit_prior: true
+          norm: false
+  a003:
+    Name: 'algo11Z24_a003'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 1
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.BernoulliNB.html'
+        model: 'sklearn.naive_bayes.BernoulliNB'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          alpha: 1.0
+          binarize: 0.0
+          class_prior:
+          fit_prior: true
+  a004:
+    Name: 'algo11Z24_a004'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 1
+        docs:
+          - 'https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.BernoulliNB.html'
+        model: 'sklearn.naive_bayes.BernoulliNB'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          alpha: 1.0
+          binarize: 0.0
+          class_prior:
+          fit_prior: true
+algo11Z25:
+  <(META)>:
+    Name:
+    Description: >
+      WordNet Semantic Meaning Link Algorythm
+  a000:
+    Name: 'algo11Z25_a000'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 0
+        docs:
+          - ''
+        model: ''
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+algo11Z26:
+  <(META)>:
+    Name:
+    Description: >
+      Create Variations based on Linderman Systems
+  a000:
+    Name: 'algo11Z26_a000'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 0
+        docs:
+          - ''
+        model: ''
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+algo11Z27:
+  <(META)>:
+    Name:
+    Description: >
+      def uush(self):#													||universally unique short hand
+      	'Generate a universally unique minimally sized words'#			||
+      	#load shorthand library
+      	#select jargon framework
+      	#validate word list for shorthand
+      	#generate any additional shorthand items needed
+      	#exchange text with shorthand and store map
+      	return self
+  a000:
+    Name: 'algo11Z27_a000'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 0
+        docs:
+          - ''
+        model: ''
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+algo11Z30:
+  <(META)>:
+    Name:
+    Description: >
+      Create Variations based on Linderman Systems
+  a000:
+    Name: 'algo11Z26_a000'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 0
+        docs:
+          - ''
+        model: ''
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+algo11Z31:
+  <(META)>:
+    Name: 'Newton Method'
+    Description: >
+  a000:
+    Code: 'algo11Z26_a000'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      sklearn:
+        valid: 0
+        docs:
+          - ''
+        model: ''
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+algo11Z32:
+  <(META)>:
+    Name: 'Autoregressive Time Series Methods'
+    Description: >
+  a000:
+    Name: Autoregressive
+    Description:
+    Code: 'algo11Z32_a000'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      statsmodels:
+        valid: 0
+        docs:
+          - 'https://www.statsmodels.org/stable/generated/statsmodels.tsa.ar_model.AR.html#statsmodels.tsa.ar_model.AR'
+        model: 'statsmodels.tsa.ar_model.AR'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          freq:
+          missing:
+  a001:
+    Name: Autoregressive Moving Average
+    Description:
+    Code: 'algo11Z32_a000'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      statsmodels:
+        valid: 0
+        docs:
+          - 'https://www.statsmodels.org/stable/generated/statsmodels.tsa.arima_model.ARMA.html#statsmodels.tsa.arima_model.ARMA'
+        model: 'statsmodels.tsa.arma_model.ARMA'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a002:
+    Name: Autoregressive Integrated Moving Average
+    Description:
+    Code: 'algo11Z32_a002'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      statsmodels:
+        valid: 0
+        docs:
+          - 'https://www.statsmodels.org/stable/generated/statsmodels.tsa.arima_model.ARIMA.html?highlight=arima#statsmodels.tsa.arima_model.ARIMA'
+        model: 'statsmodels.tsa.arima_model.ARIMA'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          exog: None
+          dates: None
+          freq: None
+  a003:
+    Name:
+    Description:
+    Code: 'algo11Z32_a001'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      statsmodels:
+        valid: 0
+        docs:
+          - 'https://www.statsmodels.org/stable/generated/statsmodels.tsa.statespace.sarimax.SARIMAX.html#statsmodels.tsa.statespace.sarimax.SARIMAX'
+        model: 'statsmodels.tsa.statespace.sarimax.SARIMAX'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+          order: (1,0,0)
+          seasonal_order: None
+          trend: None
+          measurement_error: False
+          time_varying_regression: False
+          mle_regression: True
+          simple_differencing: False
+          enforce_stationarity: True
+          enforce_invertibility: True
+          hamilton_representation: False
+          concentrate_scale: False
+          kwargs:
+algo11Z33:
+  <(META)>:
+    Name: 'Smoothing Time Series Methods'
+    Description: >
+  a000:
+    Name:
+    Description:
+    Code: 'algo11Z33_a000'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      statsmodels:
+        valid: 0
+        docs:
+          - 'https://www.statsmodels.org/stable/generated/statsmodels.tsa.holtwinters.ExponentialSmoothing.html#statsmodels.tsa.holtwinters.ExponentialSmoothing'
+        model: 'statsmodels.tsa.holtwinters.ExponentialSmoothing'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+          seasonal: {“add”, “mul”, “additive”, “multiplicative”, None}
+        dargs:
+          trend: None
+          damped: False
+          seasonal: None
+          seasonal_periods: None
+          dates: Nones
+          freq: None
+          missing: 'none'
+  a001:
+    Name:
+    Description:
+    Code: 'algo11Z33_a001'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      statsmodels:
+        valid: 0
+        docs:
+          - 'https://www.statsmodels.org/stable/generated/statsmodels.tsa.holtwinters.SimpleExpSmoothing.html#statsmodels.tsa.holtwinters.SimpleExpSmoothing'
+        model: 'statsmodels.tsa.holtwinters.SimpleExpSmoothing'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:
+  a002:
+    Name:
+    Description:
+    Code: 'algo11Z33_a002'
+    platform:
+      pheonix:
+        valid: 0
+        docs:
+        model:
+        genericEQ:
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        dargs:
+        args:
+        opargs:
+      statsmodels:
+        valid: 0
+        docs:
+          - 'https://www.statsmodels.org/stable/generated/statsmodels.tsa.holtwinters.Holt.html#statsmodels.tsa.holtwinters.Holt'
+        model: 'statsmodels.tsa.holtwinters.Holt'
+        metrics:
+          size: 32
+          speed: 32
+          success: 32
+          datasettype: 32
+        status: >
+        opargs:
+        dargs:

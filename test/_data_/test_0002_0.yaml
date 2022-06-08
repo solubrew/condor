@@ -1,0 +1,145 @@
+---
+<(META)>:
+  DOCid: <^[uuid]^>
+  name:
+  description: >
+  version: 0.0.0.0.0.0
+  path: <[LEXIvrs]>/panda/LEXI/LEXI.yaml
+  outline:
+  expire: <^[expire]^>
+  authority: document|this
+  security: sec|lvl2
+  <(WT)>: -32
+dmap:
+perf:
+  cores: 4
+models:
+  <(PATH)>: './models'
+  base:
+    Name: Default
+    Description:
+    STRCTR:
+      <[WORKPath]>:
+        <[DSetName]>_<[CycleID]>:
+          data:
+            - scheme:
+              db: <[DSetName]>_<[CycleID]>.sqlite
+              <(TABLES)>:
+                DSet:
+                  columns: [UUID, DSetStateID]
+                Predict:
+                  columns: [UUID, TrainDSetIDs, ModelID, ALGOs, PredDSetsID, OUTPaths]
+                DSetMap:
+                  columns: [UUID, DSetID, DSetStateID, XMAP, YMAP, ofX, ofY, OUTPaths]
+                BasicDSetStats:
+                  columns: [UUID, DSetMapID, Axis, Size, Type, Mean, Median, Sum, Min, Max, Mag, StDev, RlMean, RlMedian, RlSum, RlMin, RlMax, RlMag, RlStDev]
+                RunTracker:
+                  columns: [UUID, RunID, DSetMapID, DSetSLCTID]
+    CMDs:
+      RUN:
+        cmd: >
+          cd <[WORKPath]>/<{DSetName]>_<[CycleID]>
+          python git init
+    TrainMap:
+      RawData:
+        RND145_Training:
+          records:
+          columns:
+        RND145_Tournament:
+          records:
+          columns:
+        TrainCategorySets:
+        TrainFeatureSets:
+        TrainTargetSets:
+        PredictCategorySets:
+        PredictFeatureSets:
+        PredictTargetSets:
+        ValidCategorySets:
+        ValidFeatureSets:
+        ValidTargetSets:
+    ALGOs:
+      - 12z0:
+        Predictions:
+        Metrics:
+          LogLoss:
+          AUC:
+      - 12z0|11z0:
+        Predictions:
+        Metrics:
+          LogLoss:
+          AUC:
+  startNODE:
+    name: Start Node
+    orgs:
+      activation_fn: ['tf.nn.relu','tf.sigmoid']
+    dargs:
+      num_outputs: 32
+      activation_fn: 'tf.nn.relu'
+      weights_initializer: 'relu_init'
+      weights_regularizer: 'weights_reg'
+      normalizer_fn:
+      normalizer_params:
+    args:
+      -
+        uuid:
+        name:
+        dargs:
+          num_outputs: 32
+          activation_fn: 'tf.nn.relu'
+          weights_initializer: 'relu_init'
+          weights_regularizer: 'weights_reg'
+          normalizer_fn: <[normFX]>
+          normalizer_params: <[normPARAMs]>
+  midNODE:
+    name: Mid Node
+    orgs:
+    dargs:
+      num_outputs: 16
+      activation_fn: 'tf.nn.relu'
+      weights_initializer: 'relu_init'
+      weights_regularizer: 'weights_reg'
+      normalizer_fn: batch_norm
+      normalizer_params:
+    args:
+      -
+        uuid:
+        name:
+        dargs:
+          num_outputs: 32
+          activation_fn: 'tf.nn.relu'
+          weights_initializer: 'relu_init'
+          weights_regularizer: 'weights_reg'
+          normalizer_fn: <[normFX]>
+          normalizer_params: <[normPARAMs]>
+      -
+        uuid:
+        name:
+        dargs:
+          num_outputs: 32
+          activation_fn: 'tf.sigmoid'
+          weights_initializer:
+            fx: relu_init
+          weights_regularizer: 'weights_reg'
+          normalizer_fn: <[normFX]>
+          normalizer_params: <[normPARAMs]>
+  endNODE:
+    name: End Node
+    orgs:
+    dargs:
+      num_outputs: 2
+      activation_fn: 'tf.nn.relu'
+      weights_initializer: 'relu_init'
+      weights_regularizer: 'weights_reg'
+      normalizer_fn:
+      normalizer_params:
+    args:
+      -
+        uuid:
+        name:
+        dargs:
+          num_outputs: 32
+          activation_fn: 'tf.nn.relu'
+          weights_initializer: 'relu_init'
+          weights_regularizer: 'weights_reg'
+          normalizer_fn: <[normFX]>
+          normalizer_params: <[normPARAMs]>

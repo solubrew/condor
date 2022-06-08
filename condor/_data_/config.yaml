@@ -1,0 +1,34 @@
+---
+<(META)>:
+  DOCid: <^[uuid]^>
+  name:
+  description: >
+  expirary: <[expiration]>
+  version: <[version]>
+  <(path)>: <[LEXIvrs]>pheonix/elements/config/z-data_/config.yaml
+  outline: <[outline]>
+  authority: document|this
+  security: sec|lvl2
+  <(WT)>: -32
+perf:
+  cores: 4
+LEXIvrs: /home/solubrew/AIM/
+asprime:
+user: <[LEXIvrs]>/bear/<[prime]>/<[prime]>.yaml
+prime: <[prime]>
+things:
+  <(LCLvrs)>: <[<[SB]>:.DATAvrs]>
+  <(PATH)>: WDM/thingery_com/content/
+  whats:
+    abstracts:
+      digitialsystems:
+        <(PATH)>:
+          - filetypes.yaml
+examine:
+  store:
+    load_things:
+      - files.yaml
+      - dbs.yaml
+      - paths.yaml
+filetypes: /home/solubrew/OPs/3_Work/opENGRg/3_Work/jobWarlockSys/actvThingery/OMEGA/content/whats/abstracts/defined/digitalsystems/filetypes.yaml
+syntaxtypes: /home/solubrew/OPs/3_Work/opENGRg/3_Work/jobWarlockSys/actvThingery/OMEGA/content/whats/abstracts/defined/digitalsystems/syntax.yaml
