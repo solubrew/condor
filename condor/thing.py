@@ -37,7 +37,7 @@ try:
 	from yaml import Loader, Dumper#							||
 except:
 	print('YAML Failed')
-from yamlinclude import YamlIncludeConstructor
+from yamlinclude.constructor import YamlIncludeConstructor
 #===============================================================================||
 here = join(dirname(__file__),'')#						||
 there = abspath(join('../../..'))#						||set path at pheonix level
@@ -60,21 +60,31 @@ def getName():
 		integrate with calcgen.text.name method
 	'''
 	return 'namesomething'
-def thingify(thing, module=None):
+
+def thingify(thing, module=None, path=None, test=False):
 	'''Import dotted path text and return the attribute/class'''#				||
 	if log: print(f'Thing {thing}')
-	if module == None:#															||
-		try:#																	||
+	if test:
+		if module == None:#															||
 			module_path, thing = thing.rsplit('.', 1)#						||
 			module = import_module(module_path)#								||
-		except Exception as e:#													||
-			print(f'Thingify Module Path {thing} Failed {e}')
-			return None
-	try:#																	||
 		obj = getattr(module, thing)#									||
-	except AttributeError as e:#											||
-		print('Thingification Failed due to ',e)
-	return obj#																	||
+		return obj
+	else:
+		if module == None:#															||
+			try:#																	||
+				module_path, thing = thing.rsplit('.', 1)#						||
+				module = import_module(module_path)#								||
+			except Exception as e:#													||
+				print(f'Thingify Module Path {thing} Failed {e}')
+				if path: print('From this Path', path)
+				return None
+		try:#																	||
+			obj = getattr(module, thing)#									||
+		except AttributeError as e:#											||
+			print('Thingification Failed due to ',e)
+		return obj#																	||
+
 class what:#																	||
 	'''provide basic identifying data Load Basic Things for intial build
 		blocks'''#																||
@@ -87,9 +97,15 @@ class what:#																	||
 		if given == None:#														||
 			out = self.uuid().ruuid#											||
 		yield out#																||
+
 	def get(self, thing=None):#											||
+		''' '''
+
 		if thing == None:#												||
 			thing = self.it#											||
+		self.text = ''
+		if not exists(thing):
+			return self
 		try:#															||
 			with open(thing, 'r') as doc:#								||
 				text = doc.read()#										||
@@ -104,6 +120,7 @@ class what:#																	||
 		except Exception as e:#											||
 			print('Couldnt Load YAML document ',thing,'due to',e)
 		return self#													||=>
+
 	def uuid(self):#															||
 		self.ruuid = str(uuid.uuid4())#											||
 		self.hexid = uuid.UUID(self.ruuid).hex#									||
@@ -112,6 +129,7 @@ class what:#																	||
 		return self#															||
 	def symbols(self, language, tipe):
 		symbols = get(self.config['symbols'])
+
 class when:#																	||
 	'get a basic time object'#													||
 	version = '0.0.0.0.0.0'#													||=>Version Class

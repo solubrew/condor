@@ -11,7 +11,7 @@
 	version: '0.0.0.0.0.0'
 	authority: document|this
 	security: seclvl2
-	<(wt)>: -32
+	<(WT)>: -32
 '''
 # -*- coding: utf-8 -*-
 #===============================================================================||
@@ -21,7 +21,7 @@ from importlib import import_module#											||
 #===============================================================================||
 from condor import session, thing#												||
 from excalc import text as calct, tree as calctr#								||
-from fxsquirl.orgnql import fonql, yonql
+from squirl.orgnql import fonql, yonql
 from subtrix import subtrix#													||
 #========================Instance Globals=======================================||
 'Generate an Instance uuid for the initiation point in a session'#				||
@@ -98,8 +98,8 @@ class instruct:#																||
 		self.dikt = self.load(p).dikt
 		return self#													||
 
-	def load(self, this=None, how=None, limit=None):#					||
-		'''Load File or Directory'''#										||
+	def load(self, this=None, how=None, limit=None):#							||
+		'''Load File or Directory'''#											||
 		if this == None:
 			this = self.thing
 		self.dikt, self.text = load(this, how)

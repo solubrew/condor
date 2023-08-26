@@ -20,7 +20,7 @@
 '''#																			||
 # -*- coding: utf-8 -*-#														||
 #==================================Core Modules=================================||
-from os.path import abspath, dirname, join#										||
+from os.path import abspath, dirname, join, exists#										||
 from os import listdir
 import datetime as dt, copy#												||
 from importlib import import_module#											||
@@ -33,7 +33,7 @@ here = join(dirname(__file__),'')#												||
 there = abspath(join('../../..'))#												||set path at pheonix level
 where = abspath(join(''))#														||set path at pheonix level
 version = '0.0.0.0.0.0'#														||
-log = False
+log = True
 #===============================================================================||
 pxcfg = join(abspath(here), '_data_/config.yaml')#							||use default configuration
 class pov:#																		||
@@ -42,43 +42,63 @@ class pov:#																		||
 		self.config = thing.what().get(pxcfg).dikt#								||
 		self.session = {}#														||
 		lexi = thing.what().uuid().ruuid#										||
-		self.lexiv = self.config['LEXIvrs']#									||
+		try:
+			self.lexiv = self.config['LEXIvrs']#									||
+		except:
+			self.lexiv = join(abspath(here), '../')
 		self.where = thing.where()#												||
 		self.who = thing.who()#													||
 		self.homev = self.where.device().home#									||
 		self.bearv = f'{self.lexiv}/bear/'#							||
 		self.actors, self.concerns = {}, {}#									||
 		self.prime()#															||
+
 	def prime(self):#															||
 		'Load Prime Point of View'#												||
+		prime = {}
 		try:#																	||
 			primefile = f'{self.homev}/.config/lexi/prime.yaml'#		||
-			prime = thing.what().get(primefile).dikt#								||
+			if exists(primefile):
+				prime = thing.what().get(primefile).dikt#								||
 		except Exception as e:#																||
-			print('Failed to load Prime Config File', e)
-			primefile = 'HVC/SETUP/prime.yaml'#									||
-			prime = thing.what().get(primefile).dikt#								||
+			if log: print('Prime File Failed', e)
+			pass
+		try:
+			prime_cfg = thing.what().get(join(abspath(here), '../.config/aim.yaml')).dikt
+			prime = thing.what().get(prime_cfg['prime']).dikt
+		except Exception as e:
+			if log: print('Prime Cfg File Failed', e)
+		# try:
+		# 	if log: print('Failed to load Prime Config File', e)
+		# 	primefile = 'HVC/SETUP/prime.yaml'#									||
+		# 	prime = thing.what().get(primefile).dikt#								||
+		# except Exception as e:
 		self.prime = prime['prime']#											||
 		self.concern = prime['concern']#										||
 		ppovfile = f'{self.bearv}{self.concern}/{self.prime}.yaml'#		||
 		if log: print('Load PPOV File', ppovfile)
 		self.ppov = thing.what().get(ppovfile).dikt#							||load prime pov file
+		if log: print('PPOV', self.ppov)
 		return self#															||
+
 	def loadActors(self):
 		''' '''
 		for actor in self.ppov['povs']['actors']:
 			self.actors[actor] = actor(actor)
 		return self
+
 	def loadConcerns(self):
 		''' '''
 		for concern in self.ppov['povs']['concerns']:
 			self.concerns[concern] = concern(concern)
 		return self
+
 	def loadTmplts(self):#														||
 		''' '''
 		self.tmplts = tmplts(f'{self.bearv}LEXI/TMPLTs/')#				||
 		self.mtmplts = mtmplts(f'{self.bearv}LEXI/MTMPLTs/')#			||
 		return self#															||
+
 	def sessions(self, lvl='active'):#											||
 		'create simple session'#												||
 		povs = self.ppov['povs']#												||
@@ -98,6 +118,7 @@ class pov:#																		||
 		self.data = {'POV': povs, 'LEXIvrs': self.lexiv, 'DATAvrs': '',
 										'VEINvrs': '', 'bearvrs': self.bearv}
 		return self#															||
+
 	def create(self, expiration=None):#											||
 		'Create a new session for the actor'#									||
 		if expiration == None:#													||
@@ -110,14 +131,17 @@ class pov:#																		||
 		if log: print(newseshid)#												||
 		self.expiration = tmap.thing().window()#						||
 		return self#													||
+
 	def combine(self):#													||
 		'Load Active Sessions'#											||
 		for sesh in self.seshs:#										||
 			pass#														||
 		return self#													||
+
 	def action(self):#													||
 		''#																		||
 		return self#															||
+
 	def retire(self):#															||
 		'''Move session from active to sleep for transitioning of data'''#		||
 		sseshs = os.listdir(f'{spath}1_sleep')#						||
@@ -125,10 +149,12 @@ class pov:#																		||
 		tmpltSession = lexiv#													||
 		session = thing.what().get(this).dikt#									||
 		return self#															||
+
 	def terminate(self):#														||
 		'''Move session from sleep to kill for finalization of data history'''#	||
 		kseshs = os.listdir(f'{spath}2_kill')#							||
 		return self#													||
+
 # import os
 # import socket
 # import platform
