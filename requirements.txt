@@ -1,2 +1,11 @@
 pyyaml
 pyyaml-include
+pandas
+simplejson
+html5lib
+bs4
+pyodbc
+arrow
+statsmodels
+diskcache
+osbrain

@@ -20,7 +20,7 @@ import datetime as dt, copy#													||
 from importlib import import_module#											||
 #===============================================================================||
 from condor import session, thing#												||
-from excalc import text as calct, tree as calctr#								||
+from excalc import tree as calctr#								||
 from squirl.orgnql import fonql, yonql
 from subtrix import subtrix#													||
 #========================Instance Globals=======================================||
