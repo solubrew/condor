@@ -1,5 +1,5 @@
 # @@@@@@@@@@@@@@@@@@@Config.Config@@@@@@@@@@@@@@@@@@@@@@||
-'''
+"""
 ---
 <(META)>:
 	docid: 1b83f5b6-3b4a-437d-a8f1-372d2220125e
@@ -12,19 +12,16 @@
 	authority: document|this
 	security: seclvl2
 	<(WT)>: -32
-'''
+"""
 # -*- coding: utf-8 -*-
 # ===============================================================================||
 from os.path import abspath, dirname, expanduser, isfile, join
 from importlib import import_module  # ||
 # ===============================================================================||
-from thingifier import thing  # ||
+from subtrix import thing  # ||
 from condor import session
-# from excalc import tree as calctr#								||
-# #from squirl.orgnql import fonql,
-# from squirl.orgnql import yonql
+from excalc import tree as calctr#								||
 from subtrix import subtrix  # ||
-
 # ========================Instance Globals=======================================||
 'Generate an Instance uuid for the initiation point in a session'  # ||
 if 'povsesh' not in globals():  # ||
@@ -37,10 +34,8 @@ log = False
 # ===============================================================================||
 pxcfg = join(abspath(here), '_data_/config.yaml')  # ||use default configuration
 
-
 class instruct:  # ||
-	'Load Configuration Files with cascading override of templates'  # ||
-
+	"""Load Configuration Files with cascading override of templates"""  # ||
 	def __init__(self, it=None, data={}, prime=None, cfg=None):  # ||
 		self.config = self.load(pxcfg, 'thing', None).dikt  # ||
 		self.session = povsesh  # ||
@@ -51,7 +46,7 @@ class instruct:  # ||
 		self.dikt = {}
 
 	def addArgs(self, args):
-		''' '''
+		""" """
 		self.dikt['args'] = args
 		return self
 
@@ -83,8 +78,7 @@ class instruct:  # ||
 		else:  # ||
 			self.entries = None  # ||
 		if limit == None:
-			iis = ['<(META)>', '<(meta)>', '<(DNA)>', '<(dna)>']
-			for i in iis:
+			for i in ['<(META)>', '<(meta)>', '<(DNA)>', '<(dna)>']:
 				try:
 					self.dikt.pop(i)
 				except:
@@ -104,7 +98,7 @@ class instruct:  # ||
 		return self  # ||
 
 	def load(self, this=None, how=None, limit=None):  # ||
-		'''Load File or Directory'''  # ||
+		"""Load File or Directory"""  # ||
 		if this == None:
 			this = self.thing
 		self.dikt, self.text = load(this, how)
@@ -112,7 +106,7 @@ class instruct:  # ||
 		return self
 
 	def modulize(self, extobjs=[]):  # ||
-		'''Import dotted path text and return the attribute/class'''  # ||
+		"""Import dotted path text and return the attribute/class"""  # ||
 		if '.' in self.thing:  # ||
 			try:  # ||
 				module_path, class_name = self.thing.rsplit('.', 1)  # ||
@@ -126,7 +120,7 @@ class instruct:  # ||
 		return self  # ||
 
 	def override(self, updates, loadType=None):  # ||
-		'''override configuration with branch grafts'''  # ||
+		"""override configuration with branch grafts"""  # ||
 		if log: print('Override Updates', updates)
 		if self.dikt == {} or self.dikt == None:
 			self.load()  # ||
@@ -142,7 +136,7 @@ class instruct:  # ||
 		return self  # need to fix this to make configuration files additive
 
 	def select(self, what, frum=None):  # ||
-		'''Select subtree of YAML document from top level branches'''  # ||
+		"""Select subtree of YAML document from top level branches"""  # ||
 		if self.dikt == {}:
 			self.load(frum)  # ||
 		if not isinstance(what, list):
@@ -153,11 +147,11 @@ class instruct:  # ||
 		return self  # ||
 
 	def sessionize(self, it):  # ||
-		'''Apply session information to the given'''  # ||
+		"""Apply session information to the given"""  # ||
 		return subtrix.mechanism(it, self.pov).run().it  # ||
 
 	def selfFill(self):
-		''' '''
+		""" """
 		self.load()
 		self.text = subtrix.mechanism(self.text, self.dikt).run().it
 		if log: print('TEXT', self.text)
@@ -165,15 +159,14 @@ class instruct:  # ||
 		return self
 
 	def _seshSub(self):
-		''' '''
+		""" """
 		inputs = self.session.ppov
 		self.text = subtrix.mechanism(self.text, inputs).run().it[0]
 		self.dikt, self.text = load(self.text)
 		return self
 
-
 def load(this, how=None):
-	'''Load configuration'''
+	"""Load configuration"""
 	if log: print(f'This {this}')
 	if this == None:
 		return {}, ''
@@ -185,7 +178,7 @@ def load(this, how=None):
 		if how == 'thing':
 			dikt = thing.what(this).get().dikt  # ||
 		else:
-			dikt = next(yonql.doc(this).read()).dikt
+			dikt = thing.what(this).get().dikt
 		text = calctr.stuff(dikt).dict_2_str().it
 	# elif isdir(this):  #Not sure this is useful
 	# 	dikt = fonql.doc(this).read()
@@ -205,14 +198,13 @@ def load(this, how=None):
 		dikt, text = {}, ''
 	return dikt, text
 
-
 def loaddir(path: str, how=None):
-	'''Load a directory full of yaml files into config overriding in
+	"""Load a directory full of yaml files into config overriding in
 		alphabetical order
 
 		implement other sorting possiblities and mappings
 
-		'''
+		"""
 	cnt = 0  # ||
 	for f in listdir(path):
 		if cnt == 0:  # ||
@@ -222,9 +214,7 @@ def loaddir(path: str, how=None):
 			cfg.override(f'{path}/{f}')  # ||
 	return cfg
 
-
 # ==============================Source Materials=================================||
-'''
-
-'''
+"""
+"""
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||
