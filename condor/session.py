@@ -24,7 +24,7 @@ from os.path import abspath, dirname, join, exists  # ||
 # ===============================================================================||
 from condor.concerns import actor  # ||
 # from condor import thing#										||
-from thingifier import thing
+from subtrix import thing
 # ================Common Globals=================================================||
 here = join(dirname(__file__), '')  # ||
 there = abspath(join('../../..'))  # ||set path at pheonix level
