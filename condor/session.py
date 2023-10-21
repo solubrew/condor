@@ -21,10 +21,13 @@
 # -*- coding: utf-8 -*-#														||
 # ==================================Core Modules=================================||
 from os.path import abspath, dirname, join, exists  # ||
-# ===============================================================================||
-from condor.concerns import actor  # ||
+
 # from condor import thing#										||
 from subtrix import thing
+
+# ===============================================================================||
+from condor.concerns import actor  # ||
+
 # ================Common Globals=================================================||
 here = join(dirname(__file__), '')  # ||
 there = abspath(join('../../..'))  # ||set path at pheonix level
@@ -37,15 +40,15 @@ class pov:  # ||
 	'Load the Point-Of-View Initiating the Instance'  # ||
 
 	def __init__(self):  # ||
-		self.config = thing.what().get(pxcfg).dikt  # ||
+		self.config = thing.What().get(pxcfg).dikt  # ||
 		self.session = {}  # ||
-		lexi = thing.what().uuid().ruuid  # ||
+		lexi = thing.What().uuid().ruuid  # ||
 		try:
 			self.lexiv = self.config['LEXIvrs']  # ||
 		except:
 			self.lexiv = join(abspath(here), '../')
-		self.where = thing.where()  # ||
-		self.who = thing.who()  # ||
+		self.where = thing.Where()  # ||
+		self.who = thing.Who()  # ||
 		self.homev = self.where.device().home  # ||
 		self.bearv = f'{self.lexiv}/bear/'  # ||
 		self.actors, self.concerns = {}, {}  # ||
@@ -57,13 +60,13 @@ class pov:  # ||
 		try:  # ||
 			primefile = f'{self.homev}/.config/lexi/prime.yaml'  # ||
 			if exists(primefile):
-				prime = thing.what().get(primefile).dikt  # ||
+				prime = thing.What().get(primefile).dikt  # ||
 		except Exception as e:  # ||
 			if log: print('Prime File Failed', e)
 			pass
 		try:
-			prime_cfg = thing.what().get(join(abspath(here), '../.config/aim.yaml')).dikt
-			prime = thing.what().get(prime_cfg['prime']).dikt
+			prime_cfg = thing.What().get(join(abspath(here), '../.config/aim.yaml')).dikt
+			prime = thing.What().get(prime_cfg['prime']).dikt
 		except Exception as e:
 			if log: print('Prime Cfg File Failed', e)
 		# try:
@@ -75,7 +78,7 @@ class pov:  # ||
 		self.concern = prime['concern']  # ||
 		ppovfile = f'{self.bearv}{self.concern}/{self.prime}.yaml'  # ||
 		if log: print('Load PPOV File', ppovfile)
-		self.ppov = thing.what().get(ppovfile).dikt  # ||load prime pov file
+		self.ppov = thing.What().get(ppovfile).dikt  # ||load prime pov file
 		if log: print('PPOV', self.ppov)
 		return self  # ||
 

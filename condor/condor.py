@@ -13,6 +13,7 @@
 	security: seclvl2
 	<(WT)>: -32
 """
+import json
 from importlib import import_module  # ||
 # -*- coding: utf-8 -*-
 # ===============================================================================||
@@ -182,9 +183,9 @@ def load(this, how=None):
 	elif isfile(this):  # ||
 		if log: print('This is a file', this)
 		if how == 'thing':
-			dikt = thing.what(this).get().dikt  # ||
+			dikt = thing.What(this).get().dikt  # ||
 		else:
-			dikt = thing.what(this).get().dikt
+			dikt = thing.What(this).get().dikt
 		text = calctr.stuff(dikt).dict_2_str().it
 	# elif isdir(this):  #Not sure this is useful
 	# 	dikt = fonql.doc(this).read()
