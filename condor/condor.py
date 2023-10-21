@@ -13,15 +13,18 @@
 	security: seclvl2
 	<(WT)>: -32
 """
+from importlib import import_module  # ||
 # -*- coding: utf-8 -*-
 # ===============================================================================||
 from os.path import abspath, dirname, expanduser, isfile, join
-from importlib import import_module  # ||
+
+from excalc import tree as calctr  # ||
+from subtrix import subtrix  # ||
 # ===============================================================================||
 from subtrix import thing  # ||
+
 from condor import session
-from excalc import tree as calctr#								||
-from subtrix import subtrix  # ||
+
 # ========================Instance Globals=======================================||
 'Generate an Instance uuid for the initiation point in a session'  # ||
 if 'povsesh' not in globals():  # ||
@@ -34,8 +37,10 @@ log = False
 # ===============================================================================||
 pxcfg = join(abspath(here), '_data_/config.yaml')  # ||use default configuration
 
+
 class instruct:  # ||
 	"""Load Configuration Files with cascading override of templates"""  # ||
+
 	def __init__(self, it=None, data={}, prime=None, cfg=None):  # ||
 		self.config = self.load(pxcfg, 'thing', None).dikt  # ||
 		self.session = povsesh  # ||
@@ -165,6 +170,7 @@ class instruct:  # ||
 		self.dikt, self.text = load(self.text)
 		return self
 
+
 def load(this, how=None):
 	"""Load configuration"""
 	if log: print(f'This {this}')
@@ -198,6 +204,7 @@ def load(this, how=None):
 		dikt, text = {}, ''
 	return dikt, text
 
+
 def loaddir(path: str, how=None):
 	"""Load a directory full of yaml files into config overriding in
 		alphabetical order
@@ -213,6 +220,7 @@ def loaddir(path: str, how=None):
 		else:  # ||
 			cfg.override(f'{path}/{f}')  # ||
 	return cfg
+
 
 # ==============================Source Materials=================================||
 """
