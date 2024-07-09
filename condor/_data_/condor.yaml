@@ -5,7 +5,7 @@
   description: >
   expirary: <[expiration]>
   version: <[version]>
-  <(path)>: <[LEXIvrs]>pheonix/elements/config/z-data_/config.yaml
+  <(path)>: <[LEXIvrs]>pheonix/elements/config/z-data_/condor.yaml
   outline: <[outline]>
   authority: document|this
   security: sec|lvl2

@@ -1,0 +1,15 @@
+---
+<(META)>:
+  DOCid: <^[uuid]^>
+  name:
+  description: >
+  expirary: <[expiration]>
+  version: <[version]>
+  <(path)>: <[LEXIvrs]>pheonix/elements/config/z-data_/condor.yaml
+  outline: <[outline]>
+  authority: document|this
+  security: sec|lvl2
+  <(WT)>: -32
+perf:
+  cores: 4
+LEXIvrs: /mnt/iverse/Libraries/code

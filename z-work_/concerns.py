@@ -1,4 +1,4 @@
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||
 '''
 ---
 <(meta)>:
@@ -6,22 +6,20 @@
 	Name:
 	description: >
 	expirary: <[expiration]>
-	Version: <[Version]>
-	path: <[LEXIvrs]>panda/LEXI/
 	outline: <[outline]>
 	authority: document|this
 	security: seclvl2
 	<(wt)>: -32
 '''
 # -*- coding: utf-8 -*-
-#===============================================================================||
-from os.path import abspath, dirname, join
-#===============================================================================||
-here = join(dirname(__file__),'')#						||
-there = abspath(join('../../..'))#												||set path at pheonix level
-version = '0.0.0.0.0.0'
-wolfpack = f'{there}wolf/pack/bash'
-#===============================================================================||
+# ===============================================================================||
+from os.path import dirname, join
+
+# ===============================================================================||
+here = join(dirname(__file__), '')  # ||
+
+
+# ===============================================================================||
 class actor(object):
 	def __init__(self, actor, cfg={}):
 		'''Actor object implements permissions and roles for access to work and
@@ -35,15 +33,18 @@ class actor(object):
 
 	def loadCFGs(self):
 		''' '''
+
 	def loadOP(self):
 		''' '''
+
 	def loadDATA(self):
 		''' '''
+
 	def searchOPs(self):
 		''' '''
+
 	def searchDATA(self):
 		''' '''
-
 
 
 class concern(object):
@@ -56,8 +57,10 @@ class concern(object):
 		self.config = config.insturct(pxcfg).override(cfg)
 		self.pov = self.config.dikt['ppov']
 		self.concern = concern
+
 	def loadCFGs(self):
 		''' '''
+
 	def loadOP(self, op):
 		''' '''
 		if isinstance(op, str):
@@ -72,6 +75,7 @@ class concern(object):
 			fnd, op = self.searchOPs(op)
 			if fnd == False:
 				return False, None
+
 	def searchOPs(self):
 		'''Search for Operations connected to concern '''
 		path = '{0}OPs'.format(self.path)
@@ -86,13 +90,13 @@ class concern(object):
 					if term == op:
 						return True, op
 		return False, None
+
 	def searchDATA(self):
 		'''Search for data connected to concern '''
 
 
-
-#==============================Source Materials=================================||
-#================================:::DNA:::======================================||
+# ==============================Source Materials=================================||
+# ================================:::DNA:::======================================||
 ''' #																			||
 dna: #																			||
 <@[datetime]@>: #																||
@@ -111,5 +115,5 @@ dna: #																			||
 			<[description]> #													||
 		work: #																	||
 			- <@[work_datetime]@> #												||
-''' #																			||
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||
+'''  # ||
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||

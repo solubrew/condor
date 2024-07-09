@@ -1,4 +1,4 @@
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||
 '''
 ---
 <(meta)>:
@@ -14,21 +14,22 @@
 	<(wt)>: -32
 '''
 # -*- coding: utf-8 -*-
-#===============================================================================||
-from os.path import abspath, dirname, join
-#===============================================================================||
-here = join(dirname(__file__),'')#						||
-there = abspath(join('../../..'))#												||set path at pheonix level
-version = '0.0.0.0.0.0'#												||
-wolfpack = '{0}wolf/pack/bash'.format(there)
-#===============================================================================||
+# ===============================================================================||
+from os.path import dirname, join
 
+# ===============================================================================||
+here = join(dirname(__file__), '')  # ||
+
+
+# ===============================================================================||
 
 class tmplt(object):
 	'''Load object that can retrieve tmplt from default tmplt store'''
+
 	def __init__(self, path, tipe='tmplts'):
 		''' '''
 		self.tmplts = fonql.doc(path)
+
 	def search(self, term, what='names'):
 		'''Filter through template directories looking for search term and
 		 	opening files and searching text if a text search is called'''
@@ -43,17 +44,20 @@ class tmplt(object):
 					break
 
 		return self
+
+
 class mtmplt(object):
 	'''Load object that can retrieve mtmplt from default tmplt store'''
+
 	def __init__(self):
 		self.mtmplts = fonql.doc(path).read()
+
 	def search(self):
 		''' '''
 
 
-
-#==============================Source Materials=================================||
-#================================:::DNA:::======================================||
+# ==============================Source Materials=================================||
+# ================================:::DNA:::======================================||
 ''' #																			||
 dna: #																			||
 <@[datetime]@>: #																||
@@ -72,5 +76,5 @@ dna: #																			||
 			<[description]> #													||
 		work: #																	||
 			- <@[work_datetime]@> #												||
-''' #																			||
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||
+'''  # ||
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@||
